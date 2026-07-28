@@ -1,0 +1,173 @@
+{
+  "01-prompt-injection": {
+    "hook_strength": 4,
+    "hook_note": "Opens immediately with a compelling statement: 'There's a security risk when you're developing with AI on your local computer.' This creates urgency and curiosity.",
+    "standalone_clarity": 5,
+    "clarity_note": "The narrative arc is complete and clear: identifies the problem (local agent risk), explains the threat vector (prompt injection via untrusted websites), and presents the solution (cloud environments).",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:19",
+        "problem": "Spoken filler words 'you know' omitted from caption ('They could read, you know, passwords')."
+      },
+      {
+        "timestamp": "00:59",
+        "problem": "Spoken filler word 'like' omitted from caption ('And so, like, developing')."
+      }
+    ],
+    "framing": 3,
+    "framing_note": "The 16:9 webcam source is framed in a landscape box within the vertical frame, leaving large black margins top and bottom. While key framing preserves the speaker's face, zooming in slightly or reframing to 9:16 vertically would fill the screen better.",
+    "edit_quality": 4,
+    "edit_note": "Clean presentation with centered, animated word-level captions and a clear header title.",
+    "audio": 5,
+    "audio_note": "Audio is clear, intelligible, and maintains consistent volume throughout without clipping or harsh noise.",
+    "visible_cut_seams": "None, this is a single continuous clip.",
+    "worst_problem": "The landscape aspect ratio box leaves significant empty black space on top and bottom of the video frame.",
+    "concrete_fixes": [
+      "Crop/zoom the speaker's webcam feed to 9:16 portrait to fill the mobile frame more dynamically.",
+      "Include minor spoken words in captions if strict verbatim accuracy is required."
+    ],
+    "publish_ready": true
+  },
+  "02-blast-radius": {
+    "hook_strength": 3,
+    "hook_note": "Starts immediately with actionable advice ('the best thing that you can do...'), but lacks a high-impact visual or dramatic statement in the opening 2 seconds.",
+    "standalone_clarity": 4,
+    "clarity_note": "The core advice (spend limits and expiration times on API keys) is completely clear and actionable on its own.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "The headshot is well-centered in the frame with appropriate eye-level position for vertical video.",
+    "edit_quality": 4,
+    "edit_note": "Clean, simple vertical layout with animated word-by-word captions and a clear header title.",
+    "audio": 5,
+    "audio_note": "Audio is clear and intelligible with consistent volume and no background noise or clipping.",
+    "visible_cut_seams": "None, continuous unedited shot.",
+    "worst_problem": "The opening lacks a strong visual or thematic hook to instantly grab casual scrollers.",
+    "concrete_fixes": [
+      "Add a brief visual graphic or animated callout (e.g., an icon of an API key or spend limit) during the first 3 seconds to heighten initial engagement."
+    ],
+    "publish_ready": true
+  },
+  "03-one-decision-per-turn": {
+    "hook_strength": 4,
+    "hook_note": "Gets straight into the practical prompt strategy without preamble.",
+    "standalone_clarity": 5,
+    "clarity_note": "Explains a complete, highly useful prompting tactic (one decision per turn) with clear rationale and execution.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "Well-centered face framing suitable for portrait view.",
+    "edit_quality": 4,
+    "edit_note": "Simple single-take clip with clear title header and active word-level captioning.",
+    "audio": 4,
+    "audio_note": "Clear speech throughout with consistent audio level.",
+    "visible_cut_seams": "None, continuous take.",
+    "worst_problem": "Slight trailing 'And' cut off at the very end of the video.",
+    "concrete_fixes": [
+      "Trim the final millisecond to cut out the trailing word 'And'."
+    ],
+    "publish_ready": true
+  },
+  "04-dont-build-dev-tools": {
+    "hook_strength": 4,
+    "hook_note": "Starts immediately with a provocative, opinionated thesis statement paired with a clear title header.",
+    "standalone_clarity": 5,
+    "clarity_note": "Completely self-contained argument with a full thesis, reasoning, and practical takeaway.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "Vertical framing keeps the speaker centered with adequate headroom.",
+    "edit_quality": 5,
+    "edit_note": "Clean single-take edit with smoothly timed word-by-word animated captions.",
+    "audio": 4,
+    "audio_note": "Clear, clean speech audio without clipping or background interference.",
+    "visible_cut_seams": "None",
+    "worst_problem": "None",
+    "concrete_fixes": [],
+    "publish_ready": true
+  },
+  "05-niche-markets": {
+    "hook_strength": 4,
+    "hook_note": "Opens immediately with a strong statement ('the more niche the market... the better') that grabs interest for creators and founders.",
+    "standalone_clarity": 5,
+    "clarity_note": "The speaker delivers a complete, logical argument explaining why big companies leave niche markets open and ends with actionable advice.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "Good vertical crop centered on the speaker's face with appropriate headroom.",
+    "edit_quality": 4,
+    "edit_note": "Captions are well-paced, styled nicely with active word highlighting, and placed safely away from the header title.",
+    "audio": 5,
+    "audio_note": "Voice audio is clear and consistent throughout.",
+    "visible_cut_seams": "None",
+    "worst_problem": "None",
+    "concrete_fixes": [
+      "Consider adding background music to increase overall energy."
+    ],
+    "publish_ready": true
+  },
+  "06-job-boards-are-dead": {
+    "hook_strength": 4,
+    "hook_note": "The opening statement 'nobody is using job websites anymore' combined with the header banner immediately hooks anyone currently job hunting.",
+    "standalone_clarity": 5,
+    "clarity_note": "The argument is clear and fully explained: AI application spam made online job postings useless for recruiters, making personal networking essential again.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:15",
+        "problem": "Spoken 'And so' at the start of the sentence is omitted from the caption."
+      }
+    ],
+    "framing": 4,
+    "framing_note": "Headroom and centering are well-adjusted for a vertical 9:16 frame.",
+    "edit_quality": 4,
+    "edit_note": "The jump cut removes tangential talk seamlessly and keeps the core argument moving forward.",
+    "audio": 4,
+    "audio_note": "Voice audio is crisp, legible, and volume remains consistent across the cut seam.",
+    "visible_cut_seams": "A subtle visual jump cut occurs at 00:19 between 'what's real' and 'So it like more than ever'.",
+    "worst_problem": "Slight caption omission at 00:15 where 'And so' is skipped.",
+    "concrete_fixes": [
+      "Update the caption at 00:15 to include 'And so' before 'they just get overwhelmed'."
+    ],
+    "publish_ready": true
+  },
+  "07-adversarial-review": {
+    "hook_strength": 3,
+    "hook_note": "Starts mid-phrase with 'you can make it be more adversarial...', which feels slightly abrupt, though the title overlay provides good context.",
+    "standalone_clarity": 4,
+    "clarity_note": "The concept of using AI coding agents to adversarially attack Pull Requests is clearly explained and easy to follow.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "Good vertical headshot frame with the speaker centered and well-proportioned for phone screens.",
+    "edit_quality": 4,
+    "edit_note": "The internal cut near 00:38 bridges two talk sections cleanly without disrupting the flow of thought.",
+    "audio": 4,
+    "audio_note": "Audio is clear, intelligible, and maintains steady levels across the edit seam.",
+    "visible_cut_seams": "00:38 - Slight visual jump cut as speaker's head shifts between the two source segments.",
+    "worst_problem": "Slightly abrupt start mid-sentence at 00:00.",
+    "concrete_fixes": [
+      "Trim the start slightly or adjust the intro frame so it doesn't open mid-breath on 'you can'."
+    ],
+    "publish_ready": true
+  },
+  "08-planning-beats-agile": {
+    "hook_strength": 4,
+    "hook_note": "The speaker opens immediately with a relatable, contrarian statement about doing more markdown planning than coding, paired with a clear top header graphic.",
+    "standalone_clarity": 5,
+    "clarity_note": "The narrative arc is complete and easy to follow: current workflow -> past agile mindset -> why modern AI agents changed the rule back to upfront planning.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "The speaker's head and face are well-centered and framed cleanly for vertical mobile screens.",
+    "edit_quality": 5,
+    "edit_note": "The single continuous take is well-trimmed at both ends, and the dynamic yellow word highlighting adds good visual cadence.",
+    "audio": 5,
+    "audio_note": "Voice audio is crisp, clean, and starts and ends without clicks or audio truncation.",
+    "visible_cut_seams": "none",
+    "worst_problem": "none",
+    "concrete_fixes": [],
+    "publish_ready": true
+  }
+}

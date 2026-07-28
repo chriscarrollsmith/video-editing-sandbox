@@ -1,0 +1,227 @@
+[
+  {
+    "id": "01-prompt-injection",
+    "title": "Prompt injection is why I moved my agents to the cloud",
+    "overlay_title": "Why I run coding agents in the cloud",
+    "theme": "AI security",
+    "layout": "tile",
+    "segments": [
+      [
+        608.45,
+        682.4
+      ]
+    ],
+    "note": "Full arc: local-agent risk -> the hidden-text attack -> names it -> cloud fixes it.",
+    "caption_fixes": [
+      {
+        "at": 620.15,
+        "to": "rein"
+      }
+    ],
+    "post_title": "Prompt injection is the reason my coding agents live in the cloud",
+    "slug": "prompt-injection-cloud-coding-agents",
+    "description": "A local coding agent can read your files, your passwords and your secrets. All it takes is a website with hidden text telling it to send them somewhere. That's prompt injection, and it's why I moved my agents into cloud containers.",
+    "tags": [
+      "prompt injection",
+      "AI security",
+      "coding agents",
+      "cloud development",
+      "cursor",
+      "devsecops"
+    ]
+  },
+  {
+    "id": "02-blast-radius",
+    "title": "Limit the blast radius on every API key you hand an agent",
+    "overlay_title": "Limit the blast radius",
+    "theme": "AI security",
+    "layout": "tile",
+    "segments": [
+      [
+        1526.49,
+        1564.4
+      ]
+    ],
+    "note": "Opens on the thesis. An earlier cut carried ~44s of setup about vaults and secrets proxies; self-contained but too slow for a short, so the nuance moves to the post body and the clip keeps the two concrete controls.",
+    "post_title": "You cannot stop an agent leaking a secret. Limit the blast radius instead",
+    "slug": "limit-the-blast-radius-api-keys-ai-agents",
+    "description": "Vaults and secrets proxies still lose to a determined agent, so stop trying to make leaks impossible and make them cheap instead: a $5 spend cap on every API key, and a 30-day expiry so a key stolen off a server six months from now is already worthless.",
+    "tags": [
+      "api keys",
+      "secret management",
+      "AI security",
+      "blast radius",
+      "agentic AI",
+      "devops"
+    ]
+  },
+  {
+    "id": "03-one-decision-per-turn",
+    "title": "The prompt that stops AI burying you in walls of text",
+    "overlay_title": "One decision per turn",
+    "theme": "Working with agents",
+    "layout": "tile",
+    "segments": [
+      [
+        1225.8,
+        1261.5
+      ]
+    ],
+    "note": "Shortest clip, single quotable prompt. Strong standalone.",
+    "post_title": "The prompt that stops AI burying you in walls of text",
+    "slug": "one-decision-per-turn-ai-prompt",
+    "description": "Tell the agent you are a human with a limited attention span and it may only put one decision in front of you per turn. It turns an overwhelming markdown dump into a conversation you can actually follow.",
+    "tags": [
+      "prompting",
+      "AI workflow",
+      "context engineering",
+      "cursor",
+      "developer productivity"
+    ]
+  },
+  {
+    "id": "04-dont-build-dev-tools",
+    "title": "Be something other than a software developer first",
+    "overlay_title": "Stop building dev tools",
+    "theme": "Building a business",
+    "layout": "head",
+    "segments": [
+      [
+        1769.1,
+        1831.2
+      ]
+    ],
+    "note": "Hook-first: opens on the thesis, not the question that prompted it.",
+    "post_title": "Be something other than a software developer first",
+    "slug": "dont-build-dev-tools",
+    "description": "Everybody in software builds dev tools, because those are the problems they know. That is a market with a million competitors. The problems worth solving are in whatever other field you already understand.",
+    "tags": [
+      "indie hacking",
+      "developer career",
+      "product strategy",
+      "startup ideas",
+      "niche markets"
+    ]
+  },
+  {
+    "id": "05-niche-markets",
+    "title": "The more niche the market, the better",
+    "overlay_title": "Go niche on purpose",
+    "theme": "Building a business",
+    "layout": "head",
+    "segments": [
+      [
+        1915.13,
+        1962.3
+      ]
+    ],
+    "note": "Honest about the ceiling - not scalable, but it pays. Ends on a clean maxim.",
+    "post_title": "The more niche the market, the better",
+    "slug": "niche-markets-indie-software",
+    "description": "Google and Intuit are not incentivised to chase your niche. You will never build a billion dollar business in cross stitch or religious history, but you can build one that pays you very well.",
+    "tags": [
+      "niche markets",
+      "indie hacking",
+      "bootstrapping",
+      "small business",
+      "product strategy"
+    ]
+  },
+  {
+    "id": "06-job-boards-are-dead",
+    "title": "Nobody is using job websites anymore",
+    "overlay_title": "Applying online is a losing game",
+    "theme": "Breaking into tech",
+    "layout": "head",
+    "segments": [
+      [
+        2438.42,
+        2458.1
+      ],
+      [
+        2471.3,
+        2489.9
+      ]
+    ],
+    "note": "Internal cut drops an off-hand line about scammers by nationality; the clip keeps the argument and lands on 'it is who you know'.",
+    "caption_fixes": [
+      {
+        "at": 2448.71,
+        "to": "a"
+      }
+    ],
+    "post_title": "Nobody is using job websites anymore",
+    "slug": "job-boards-are-dead-networking",
+    "description": "Post a job now and you get thousands of AI-written applications nobody can sort through. Applying online has become a losing game, which makes who you know matter more than it ever has.",
+    "tags": [
+      "tech jobs",
+      "job search",
+      "networking",
+      "careers in tech",
+      "hiring"
+    ]
+  },
+  {
+    "id": "07-adversarial-review",
+    "title": "Tell the agent to attack your own pull request",
+    "overlay_title": "Make the agent attack your PR",
+    "theme": "Working with agents",
+    "layout": "head",
+    "segments": [
+      [
+        2692.98,
+        2731.9
+      ],
+      [
+        2777.9,
+        2794.6
+      ]
+    ],
+    "note": "Internal cut skips the parallel-models tangent so the clip is one idea: adversarial review, then loop it.",
+    "post_title": "Tell the agent to attack your own pull request",
+    "slug": "adversarial-ai-code-review",
+    "description": "Do not ask an agent to review your PR. Tell it to attack the PR: write four tests that break the system and find the holes in your design. Then loop it until it stops finding anything new.",
+    "tags": [
+      "code review",
+      "AI code review",
+      "testing",
+      "pull requests",
+      "agentic AI",
+      "software quality"
+    ]
+  },
+  {
+    "id": "08-planning-beats-agile",
+    "title": "Detailed up-front planning beats agile now",
+    "overlay_title": "Why I plan up front again",
+    "theme": "Working with agents",
+    "layout": "head",
+    "segments": [
+      [
+        2811.35,
+        2860.5
+      ]
+    ],
+    "note": "Contrarian hook: 'more markdown than code'. Old advice -> why it changed.",
+    "caption_fixes": [
+      {
+        "at": 2815.29,
+        "to": "code"
+      },
+      {
+        "at": 2828.23,
+        "to": "code"
+      }
+    ],
+    "post_title": "Detailed up-front planning beats agile now",
+    "slug": "planning-beats-agile-ai-agents",
+    "description": "Planning used to be wasted effort because plans broke the moment you hit the code. Agents are strong enough now that a very detailed spec written up front pays for itself. My job is more markdown than code.",
+    "tags": [
+      "software architecture",
+      "planning",
+      "agile",
+      "spec driven development",
+      "AI workflow"
+    ]
+  }
+]

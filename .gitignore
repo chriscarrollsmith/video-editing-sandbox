@@ -1,0 +1,9 @@
+# Source recording (1.09 GB) and render intermediates
+cancode-presentation-2026-07-23.mp4
+build/
+.venv/
+__pycache__/
+
+# Rendered shorts are ~157 MB total; delivered as files rather than committed.
+# Drop this line (or set up git-lfs) to version them.
+shorts/*.mp4

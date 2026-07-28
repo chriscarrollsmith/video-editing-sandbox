@@ -1,0 +1,178 @@
+{
+  "01-prompt-injection": {
+    "hook_strength": 4,
+    "hook_note": "Opens immediately with 'There's a security risk when you're developing with AI on your local computer,' which instantly grabs the attention of developers.",
+    "standalone_clarity": 5,
+    "clarity_note": "Provides a complete and self-contained explanation of prompt injection risks for local AI coding agents and why moving execution to the cloud mitigates it.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 3,
+    "framing_note": "The 16:9 webcam video is centered with wide black borders above and below, leaving a lot of unused vertical screen real estate.",
+    "edit_quality": 4,
+    "edit_note": "Good pacing for a single continuous take, though tightening a few pauses and stutters could improve retention.",
+    "audio": 4,
+    "audio_note": "Audio is clear, intelligible, and free of distortion or level cuts.",
+    "visible_cut_seams": "None, single continuous take.",
+    "worst_problem": "Excessive black space above and below the webcam frame makes it look like an unformatted landscape video pasted onto a vertical video.",
+    "concrete_fixes": [
+      "Crop and zoom into the speaker's face/upper torso so the camera feed occupies more vertical space.",
+      "Trim minor vocal pauses (such as around 00:28) to keep pacing snappy."
+    ],
+    "publish_ready": true
+  },
+  "02-blast-radius": {
+    "hook_strength": 3,
+    "hook_note": "The clip begins with descriptive setup about where people store secrets, which takes a few seconds to build momentum, but clearly sets up the problem.",
+    "standalone_clarity": 5,
+    "clarity_note": "Extremely clear and complete explanation of the security risks of AI agent credentials along with two practical mitigation strategies.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 3,
+    "framing_note": "The widescreen webcam box leaves a lot of empty black space above and below, though the speaker's head and face remain clearly in frame.",
+    "edit_quality": 4,
+    "edit_note": "Good pacing, clean caption styling with yellow highlighting, and stable layout throughout.",
+    "audio": 5,
+    "audio_note": "Clear speech audio without background noise or level issues.",
+    "visible_cut_seams": "None",
+    "worst_problem": "The landscape video embed leaves empty black space at the top and bottom of the vertical canvas.",
+    "concrete_fixes": [
+      "Crop and scale the webcam video slightly larger to better fill the vertical frame while keeping the speaker centered."
+    ],
+    "publish_ready": true
+  },
+  "03-one-decision-per-turn": {
+    "hook_strength": 4,
+    "hook_note": "Starts directly with 'One prompt that I like to use...', which immediately promises actionable value for AI prompt engineering.",
+    "standalone_clarity": 5,
+    "clarity_note": "Explains a complete prompt workflow: asking AI agents to present one decision per turn instead of dumping text walls. Perfectly clear without prior context.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 5,
+    "framing_note": "Speaker's face is centered and cleanly framed within the 9:16 aspect ratio.",
+    "edit_quality": 5,
+    "edit_note": "Clean presentation with animated word highlights and a fixed title bar at the top.",
+    "audio": 5,
+    "audio_note": "Audio is crisp, loud, clear, and begins/ends smoothly without abrupt cutoffs.",
+    "visible_cut_seams": "None. The clip is one continuous, unedited take.",
+    "worst_problem": "The top title banner ('One decision per turn') is a bit generic compared to the video's focus on stopping AI text walls.",
+    "concrete_fixes": [
+      "Reframe the top header bar to something punchier like 'Stop AI Text Walls' or 'Best AI Agent Prompt'."
+    ],
+    "publish_ready": true
+  },
+  "04-dont-build-dev-tools": {
+    "hook_strength": 4,
+    "hook_note": "Starts immediately with a strong, opinionated thesis statement ('Stop building dev tools') that captures interest for developers.",
+    "standalone_clarity": 5,
+    "clarity_note": "Extremely clear thesis and logic: developers should build software for other industries rather than saturated dev tools.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:36",
+        "problem": "The caption 'and nobody's ever going to use' cuts off early and misses the spoken words 'your dev tools'."
+      }
+    ],
+    "framing": 4,
+    "framing_note": "The top of the speaker's head is slightly cropped, but the face and expression remain clearly visible and centered.",
+    "edit_quality": 5,
+    "edit_note": "Good single-take edit with clean word-level animated captioning and a clean top banner.",
+    "audio": 5,
+    "audio_note": "Clean, clear audio with no noise or abrupt cut artifacts.",
+    "visible_cut_seams": "None",
+    "worst_problem": "Missing 'your dev tools' in the caption at 00:36.",
+    "concrete_fixes": [
+      "Fix caption timing at 00:36 to include 'your dev tools' before transitioning to 'Hate to say it'."
+    ],
+    "publish_ready": true
+  },
+  "05-niche-markets": {
+    "hook_strength": 3,
+    "hook_note": "Starts slightly abruptly mid-thought with 'And', but the core statement about niche markets creates interest.",
+    "standalone_clarity": 4,
+    "clarity_note": "Provides actionable and complete advice for indie developers seeking product ideas.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:46",
+        "problem": "Caption displays 'than software dev' but speaker says 'than software dev tools'."
+      }
+    ],
+    "framing": 4,
+    "framing_note": "Vertical framing is well-balanced with the speaker centered and good headroom.",
+    "edit_quality": 4,
+    "edit_note": "Clean single-take edit with good subtitle timing throughout most of the clip.",
+    "audio": 4,
+    "audio_note": "Audio is clear, well-balanced, and easy to understand.",
+    "visible_cut_seams": "None (single continuous clip).",
+    "worst_problem": "The final word 'tools' is omitted from the captions at 00:46.",
+    "concrete_fixes": [
+      "Fix caption at 00:46 to display 'than software dev tools'."
+    ],
+    "publish_ready": false
+  },
+  "06-job-boards-are-dead": {
+    "hook_strength": 4,
+    "hook_note": "Strong opening line claiming that job websites are obsolete and applying online is a losing game directly addresses job seekers.",
+    "standalone_clarity": 5,
+    "clarity_note": "The clip presents a complete narrative: AI application spam overwhelms recruiters, making 'who you know' essential.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 5,
+    "framing_note": "Speaker's face is nicely centered with appropriate headroom for vertical format.",
+    "edit_quality": 4,
+    "edit_note": "Clean visual layout and good caption timing throughout.",
+    "audio": 5,
+    "audio_note": "Clear speaking voice with steady volume and clean cut transitions.",
+    "visible_cut_seams": "Visual jump cut at 00:19 between 'what's real' and 'So it like more than ever'.",
+    "worst_problem": "Slight head position jump at 00:19 during the internal edit cut.",
+    "concrete_fixes": [
+      "Apply a slight punch-in zoom on the second segment (00:20 onwards) to mask the visual jump cut."
+    ],
+    "publish_ready": true
+  },
+  "07-adversarial-review": {
+    "hook_strength": 2,
+    "hook_note": "The clip begins abruptly mid-thought with filler words ('like you can make it be'), which creates a weak opening hook.",
+    "standalone_clarity": 4,
+    "clarity_note": "The explanation of prompting an AI agent to adversarially attack code and looping that process over multiple rounds is clear and practical.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:50",
+        "problem": "Caption says 'you'll' but the speaker says 'it'll'."
+      }
+    ],
+    "framing": 4,
+    "framing_note": "Good vertical framing on the speaker's face and upper torso; captions are centered and legible.",
+    "edit_quality": 4,
+    "edit_note": "The jump cut at 0:38 effectively removes filler/tangents while keeping the logical flow intact, though the start of the clip needs trimming.",
+    "audio": 5,
+    "audio_note": "Audio is clear throughout with clean levels and no audible artifacts at the jump cut.",
+    "visible_cut_seams": "A subtle head/shoulder jump cut seam occurs at 0:38 between 'that way' and 'I find that actually'.",
+    "worst_problem": "The clip starts mid-sentence on filler words ('like you can make it be').",
+    "concrete_fixes": [
+      "Trim the start point slightly so the video opens on a cleaner, complete sentence or word."
+    ],
+    "publish_ready": false
+  },
+  "08-planning-beats-agile": {
+    "hook_strength": 4,
+    "hook_note": "The opening statement ('My job these days is more reading and writing markdown than reading and writing code') is an engaging hook for tech audiences.",
+    "standalone_clarity": 5,
+    "clarity_note": "The clip explains a complete arc: starting with the current situation, comparing it to past agile best practices, and explaining why AI agents made up-front planning useful again.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 3,
+    "framing_note": "The face crop is a bit tight on top of his head, but it remains well-centered and legible on mobile screens.",
+    "edit_quality": 4,
+    "edit_note": "Clean, continuous shot with nicely synced dynamic captions. The ending lands cleanly on 'super powerful'.",
+    "audio": 4,
+    "audio_note": "Audio is clear, intelligible, and free of background noise or clipping.",
+    "visible_cut_seams": "None (single continuous take)",
+    "worst_problem": "Framing is slightly tight on the head, though acceptable for vertical video formats.",
+    "concrete_fixes": [
+      "Zoom out slightly or re-frame vertically to add a bit of headroom."
+    ],
+    "publish_ready": true
+  }
+}

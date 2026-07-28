@@ -1,0 +1,186 @@
+{
+  "01-prompt-injection": {
+    "hook_strength": 2,
+    "hook_note": "The video opens with a hesitation ('So...') and the speaker rubbing his nose before delivering the thesis. Trimming the first 1.5 seconds would make the hook much punchier.",
+    "standalone_clarity": 5,
+    "clarity_note": "The concept is explained brilliantly: local agent access risks -> prompt injection vector -> cloud sandboxing solution. Fully self-contained.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:12",
+        "problem": "Misspelling: 'free reign' should be 'free rein'."
+      }
+    ],
+    "framing": 3,
+    "framing_note": "The speaker is in a small landscape box with massive black bars on top and bottom. Cropping or zooming in to fill more vertical real estate would look significantly better on mobile.",
+    "edit_quality": 3,
+    "edit_note": "Uncut single shot. It leaves in dead start-up filler at 00:00-00:02 that should have been trimmed.",
+    "audio": 4,
+    "audio_note": "Clear voice audio from webcam mic, good volume and no clipping.",
+    "visible_cut_seams": "None, this is a single unedited continuous shot.",
+    "worst_problem": "Weak visual framing with huge black bars and a clumsy start (nose-rub and filler word 'So').",
+    "concrete_fixes": [
+      "Trim 00:00-00:02 so the audio starts directly on 'There's a security risk...'",
+      "Crop the video source to zoom in on the speaker's face and fill more of the vertical format.",
+      "Fix the caption spelling at 00:12 from 'reign' to 'rein'."
+    ],
+    "publish_ready": false
+  },
+  "02-blast-radius": {
+    "hook_strength": 2,
+    "hook_note": "Starts mid-thought with 'The risk of doing all of that...', referring to context outside the clip. It fails to grab attention immediately.",
+    "standalone_clarity": 3,
+    "clarity_note": "The core advice (limit blast radius via spend caps and expiration dates) is clear, but the opening phrase 'doing all of that' creates brief confusion.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "The speaker's webcam video is neatly centered within the vertical frame, though framed in a landscape box rather than full-frame cropped.",
+    "edit_quality": 4,
+    "edit_note": "Clean presentation with well-placed title bar and word-by-word animated captions.",
+    "audio": 4,
+    "audio_note": "Clear speech with good volume and no noticeable background noise or audio clipping.",
+    "visible_cut_seams": "None, single continuous clip.",
+    "worst_problem": "The opening line references prior context ('doing all of that') rather than starting on a self-contained hook.",
+    "concrete_fixes": [
+      "Trim the opening seconds and start the clip at 00:05 ('There's no perfectly safe way to prevent...') or re-frame the opening sentence."
+    ],
+    "publish_ready": false
+  },
+  "03-one-decision-per-turn": {
+    "hook_strength": 4,
+    "hook_note": "Starts immediately with a practical hook ('One prompt that I like to use is...'), which hooks viewers interested in AI prompting techniques.",
+    "standalone_clarity": 5,
+    "clarity_note": "The tip is completely self-contained, explaining the problem (AI sending overwhelming text walls) and the solution (requesting one decision/focus point per turn).",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 3,
+    "framing_note": "The horizontal webcam footage is centered in a vertical 9:16 frame with large black voids above and below. While functional, zooming in or using a blurred background fill would look more professional.",
+    "edit_quality": 4,
+    "edit_note": "Clean, continuous cut with good pacing, though visually basic.",
+    "audio": 5,
+    "audio_note": "Clear speech, good volume balance, and natural pauses.",
+    "visible_cut_seams": "None (single continuous clip).",
+    "worst_problem": "Large black empty spaces at the top and bottom of the frame surrounding the video frame.",
+    "concrete_fixes": [
+      "Crop/scale the video frame slightly larger or add a blurred background layer behind the video box to eliminate the large black empty space."
+    ],
+    "publish_ready": true
+  },
+  "04-dont-build-dev-tools": {
+    "hook_strength": 4,
+    "hook_note": "Opens directly on a strong, provocative thesis ('I feel like you should be something other than a software developer first...'), supported by a clear title graphic.",
+    "standalone_clarity": 5,
+    "clarity_note": "The point is articulated cleanly from start to finish with a complete narrative arc and no missing context.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "Vertical crop works well overall, though the low angle slightly clips the top of the speaker's head.",
+    "edit_quality": 4,
+    "edit_note": "Clean single-take edit with engaging word-by-word caption highlighting.",
+    "audio": 5,
+    "audio_note": "Clear speech, consistent volume, no room echo or distortion.",
+    "visible_cut_seams": "None (single continuous take)",
+    "worst_problem": "Slight vertical tight cropping clips top of speaker's head.",
+    "concrete_fixes": [
+      "Scale down or reframe the video track slightly to give headroom at the top."
+    ],
+    "publish_ready": true
+  },
+  "05-niche-markets": {
+    "hook_strength": 3,
+    "hook_note": "Starts mid-thought with 'And', but the topic title overlay ('Go niche on purpose') immediately grounds the message and keeps the viewer oriented.",
+    "standalone_clarity": 5,
+    "clarity_note": "The clip delivers a complete, highly valuable lesson for indie software developers on why choosing small niche markets avoids big tech competition.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 4,
+    "framing_note": "Vertical tight crop stays centered on the speaker's face throughout the clip.",
+    "edit_quality": 4,
+    "edit_note": "Smooth single-take edit with clean, animated two-word caption highlighting that moves at a good pace.",
+    "audio": 5,
+    "audio_note": "Audio is clear, properly leveled, and easy to understand.",
+    "visible_cut_seams": "None, this is a single continuous clip.",
+    "worst_problem": "Slight hesitation and breath pause around 00:42 between the main advice and the concluding sentences.",
+    "concrete_fixes": [
+      "Optionally trim the 1-second pause around 00:42 to keep the energy tight through the final sentence."
+    ],
+    "publish_ready": true
+  },
+  "06-job-boards-are-dead": {
+    "hook_strength": 3,
+    "hook_note": "A stray frame of a completely different person appears at 00:00 before cutting to the main speaker. The verbal start is also a bit slow ('Yeah, I think...').",
+    "standalone_clarity": 4,
+    "clarity_note": "The clip clearly presents the argument that AI-generated spam renders online job applications useless, making networking essential.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:13",
+        "problem": "Caption displays 'posted to job online' instead of spoken 'posted a job online'."
+      }
+    ],
+    "framing": 3,
+    "framing_note": "Crop is very tight on the face, cutting off the top of the speaker's head.",
+    "edit_quality": 3,
+    "edit_note": "A stray frame of another video call participant flashes at 00:00. The internal cut around 00:31 is fairly smooth otherwise.",
+    "audio": 4,
+    "audio_note": "Audio is clear with good levels and no noticeable pops at the edit seam.",
+    "visible_cut_seams": "Glitch frame of another person at 00:00; cut seam around 00:31 is smooth.",
+    "worst_problem": "Single frame flash of a different participant at the very start (00:00).",
+    "concrete_fixes": [
+      "Trim the rogue 00:00 frame showing the wrong speaker.",
+      "Correct the typo in caption at 00:13 from 'posted to job' to 'posted a job'.",
+      "Adjust framing slightly downward to avoid clipping the top of the head."
+    ],
+    "publish_ready": false
+  },
+  "07-adversarial-review": {
+    "hook_strength": 3,
+    "hook_note": "The clip opens with a slightly clumsy sentence fragment ('I like you can make it'), though the header title helps establish the context immediately.",
+    "standalone_clarity": 5,
+    "clarity_note": "The advice is completely self-contained and clear for developers using AI coding assistants.",
+    "caption_accuracy": 5,
+    "caption_issues": [],
+    "framing": 5,
+    "framing_note": "The speaker's face and upper body are perfectly centered for vertical viewing.",
+    "edit_quality": 4,
+    "edit_note": "The edit bridges two parts of the talk seamlessly in terms of idea flow and audio, with only a minor head position jump.",
+    "audio": 5,
+    "audio_note": "Speech is clean and intelligible with seamless audio transitions.",
+    "visible_cut_seams": "At 00:39-00:40 between 'that way' and 'I find that actually', where the speaker's head position shifts slightly.",
+    "worst_problem": "The opening words 'I like you can make it' are slightly awkward before the speaker lands on 'be more adversarial'.",
+    "concrete_fixes": [
+      "Trim the first second so the audio starts cleanly on 'You can make it be more adversarial'."
+    ],
+    "publish_ready": true
+  },
+  "08-planning-beats-agile": {
+    "hook_strength": 3,
+    "hook_note": "Starts with audio filler ('And so I actually...'), which weakens the opening scroll-stopper, though the title header helps frame the topic.",
+    "standalone_clarity": 5,
+    "clarity_note": "Presents a complete, logical arc explaining how AI agents changed software planning practices compared to the old Agile mindset.",
+    "caption_accuracy": 4,
+    "caption_issues": [
+      {
+        "timestamp": "00:05",
+        "problem": "Caption displays 'and writing codes' but speaker says 'and writing code'."
+      },
+      {
+        "timestamp": "00:19",
+        "problem": "Caption displays 'into the codes' but speaker says 'into the code'."
+      }
+    ],
+    "framing": 4,
+    "framing_note": "Good vertical headshot framing, slightly tight at the top of the head but very standard for phone feeds.",
+    "edit_quality": 4,
+    "edit_note": "Clean single-take clip that finishes on a crisp, complete thought.",
+    "audio": 5,
+    "audio_note": "Clear audio with good level consistency and no noise.",
+    "visible_cut_seams": "None (single continuous take).",
+    "worst_problem": "Caption typos where 'code' is pluralized to 'codes' at 00:05 and 00:19.",
+    "concrete_fixes": [
+      "Fix caption text at 00:05 and 00:19 from 'codes' to 'code'.",
+      "Trim the opening filler words ('And so I actually') so the audio starts directly on 'My job these days...'."
+    ],
+    "publish_ready": false
+  }
+}
