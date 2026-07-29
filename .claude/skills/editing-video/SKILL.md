@@ -8,10 +8,10 @@ description: Use for turning raw video footage into more polished and publishabl
 ## Before starting
 
 Confirm with the user unless already given: orientation, target length, resolution,
-and where output goes. Obtain a `GEMINI_API_KEY` if not in the environment; never
-commit it or write it into an artifact.
+and where output goes. Obtain a `GEMINI_API_KEY` for the review pass, and a
+`FAL_KEY` if upscaling. Never commit a key or write one into an artifact.
 
-Needs `ffmpeg`/`ffprobe`, `faster-whisper`, `google-genai`, and
+Needs `ffmpeg`/`ffprobe`, `faster-whisper`, `google-genai`, `fal-client`, and
 `opencv-python-headless<5` — 5.x drops the cascade API.
 
 ## Survey the source before cutting anything
@@ -60,8 +60,10 @@ Screen content: never scale a full desktop to phone width. Editor text lands
 around 9 px and is unreadable. Crop to the region that matters, or drop the
 screen and feature the speaker.
 
-State the upscale ceiling honestly. Past roughly 4x from a small source tile the
-result is mush, and no framing choice recovers detail the source never had.
+State the upscale ceiling honestly — no framing choice recovers detail the source
+never had. Plain Lanczos degrades noticeably past ~4x from a small tile; a
+restoration pass (see Upscaling) buys roughly one extra stop of apparent
+sharpness, not a new source.
 
 ## Caption
 
@@ -123,6 +125,33 @@ Two or three rounds converge. Stop there.
 
 ## Upscaling
 
+Use a restoration model, not a generation model. `fal-ai/video-upscaler`
+(Real-ESRGAN per frame) is verified working on arbitrary recorded footage and is
+the default choice.
+
+Verified 2026-07-29 on a 288x240 webcam-tile crop at `scale: 4`:
+
+- Output is exactly 4x (1152x960). Duration, frame rate and frame count are all
+  preserved (96 frames in, 96 out), so caption timings stay valid.
+- Visibly cleaner than Lanczos plus unsharp — tighter edges, less compression
+  mush, and none of the ringing that sharpening introduces. The gain is real but
+  moderate: it removes artefacts rather than inventing detail.
+- ~44 s of wall time per 4 s of 288x240 input at 4x. Scale that estimate and
+  check current pricing before committing to a long clip.
+
+**The returned audio is re-encoded and truncated** — 107 ms short in this test,
+while the video kept every frame. Always discard it and re-mux the original
+audio (`-map 0:v -map 1:a -c copy`). Verified to restore exact alignment.
+
+Order of operations: upscale first, re-mux original audio, then composite and
+burn captions. Never caption before upscaling or the text gets resampled.
+
+Real-ESRGAN is restorative rather than hallucinatory, so it is far safer on
+screen recordings than a video model — but it still synthesises detail. Check
+small UI text for legibility instead of assuming it survived.
+
+### Veo is not an upscaler
+
 Two different things share the Veo name. Do not conflate them.
 
 **`generate_videos` with a video source is extension, not upscaling.** Verified
@@ -162,6 +191,6 @@ Gemini API quirks when passing Veo-generated video: inline bytes are rejected
 (`encodedVideo` unsupported), so pass a Files API URI; and `Video.from_file()`
 attaches a mime type serialised as `encoding`, which is also rejected.
 
-Never run a *generative* upscaler over a screen recording — it reconstructs UI
-text into plausible nonsense. For deterministic restoration use Real-ESRGAN or
-Topaz.
+Never run a *generative* video model as an upscaler over a screen recording — it
+reconstructs UI text into plausible nonsense. Prefer the Real-ESRGAN path above.
+
