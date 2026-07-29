@@ -150,6 +150,40 @@ Real-ESRGAN is restorative rather than hallucinatory, so it is far safer on
 screen recordings than a video model — but it still synthesises detail. Check
 small UI text for legibility instead of assuming it survived.
 
+## Background removal
+
+`veed/video-background-removal/fast` extracts the subject with no green screen.
+Use it when a landscape source has to fill a vertical frame: compositing a cutout
+onto a designed backdrop fills 9:16 without upscaling the subject past its
+quality ceiling, because the background costs no resolution. This is the fix for
+"speaker in a letterboxed box with black bars above and below".
+
+Verified 2026-07-29 on a 1152x960 clip, `output_codec: vp9`,
+`refine_foreground_edges: true`:
+
+- Matte quality is good on a soft webcam source — clean edges at the head and
+  shoulders, ~42% opaque / 57% clear.
+- ~22 s wall time for 96 frames. Priced per 30 frames, refinement costing ~50%
+  more; roughly 1 cent per second of 24 fps footage.
+- Set `subject_is_person: false` for non-people. Do not use it on screen
+  recordings — the segmentation is subject-oriented and has nothing to hold onto.
+
+Three ffmpeg traps, all verified:
+
+1. `ffprobe` reports `pix_fmt=yuv420p` and `alphaextract` fails, but the alpha is
+   there — look for `TAG:ALPHA_MODE=1`. Force `-c:v libvpx-vp9` on the input or
+   it decodes opaque.
+2. **Even with the forced decoder, a filtergraph silently drops the alpha.**
+   `overlay` then composites nothing and you get a bare background. Decode to raw
+   RGBA and pipe it into a second ffmpeg (`-pix_fmt rgba -f rawvideo -` into
+   `-f rawvideo -pix_fmt rgba -s WxH -r N -i -`), or write RGBA frames first.
+   Both work; inline does not.
+3. Output is **shorter than input** — 96 frames in, 93 out, with audio
+   re-encoded to Opus. The loss is end-truncation, not distributed drops
+   (confirmed by matching frames 0, 46 and 92 between input and output), so
+   earlier caption timings stay valid. Re-mux the original audio and account for
+   the clipped tail.
+
 ### Veo is not an upscaler
 
 Two different things share the Veo name. Do not conflate them.
