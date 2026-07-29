@@ -5,11 +5,18 @@ description: Use for turning raw video footage into more polished and publishabl
 
 # Editing video
 
+Pipeline order. Steps in brackets are optional and cost money.
+
+survey → transcribe → select cuts → [restore] → [matte] → frame and composite →
+burn captions → encode → verify yourself → review
+
+Captions go on last, after any external pass, or the text gets resampled.
+
 ## Before starting
 
-Confirm with the user unless already given: orientation, target length, resolution,
-and where output goes. Obtain a `GEMINI_API_KEY` for the review pass, and a
-`FAL_KEY` if upscaling. Never commit a key or write one into an artifact.
+Confirm unless already given: orientation, target length, resolution, and where
+output goes. Obtain a `GEMINI_API_KEY` for the review pass and a `FAL_KEY` for
+the optional passes. Never commit a key or write one into an artifact.
 
 Needs `ffmpeg`/`ffprobe`, `faster-whisper`, `google-genai`, `fal-client`, and
 `opencv-python-headless<5` — 5.x drops the cascade API.
@@ -60,10 +67,9 @@ Screen content: never scale a full desktop to phone width. Editor text lands
 around 9 px and is unreadable. Crop to the region that matters, or drop the
 screen and feature the speaker.
 
-State the upscale ceiling honestly — no framing choice recovers detail the source
-never had. Plain Lanczos degrades noticeably past ~4x from a small tile; a
-restoration pass (see Upscaling) buys roughly one extra stop of apparent
-sharpness, not a new source.
+No framing choice recovers detail the source never had. Lanczos degrades
+noticeably past ~4x from a small tile. Restoration buys about one extra stop of
+apparent sharpness; matting onto a backdrop avoids needing the upscale at all.
 
 ## Caption
 
@@ -123,108 +129,78 @@ Triage the response:
 
 Two or three rounds converge. Stop there.
 
-## Upscaling
+## Optional passes (fal)
 
-Use a restoration model, not a generation model. `fal-ai/video-upscaler`
-(Real-ESRGAN per frame) is verified working on arbitrary recorded footage and is
-the default choice.
+Both cost money and both hand back re-encoded audio. Get user approval with a
+cost estimate first, and after either pass:
 
-Verified 2026-07-29 on a 288x240 webcam-tile crop at `scale: 4`:
+- **Discard the returned audio and re-mux the original** (`-map 0:v -map 1:a
+  -c copy`).
+- Compare frame count and duration against the input before trusting existing
+  caption timings.
 
-- Output is exactly 4x (1152x960). Duration, frame rate and frame count are all
-  preserved (96 frames in, 96 out), so caption timings stay valid.
-- Visibly cleaner than Lanczos plus unsharp — tighter edges, less compression
-  mush, and none of the ringing that sharpening introduces. The gain is real but
-  moderate: it removes artefacts rather than inventing detail.
-- ~44 s of wall time per 4 s of 288x240 input at 4x. Scale that estimate and
-  check current pricing before committing to a long clip.
+### Restoration — `fal-ai/video-upscaler`
 
-**The returned audio is re-encoded and truncated** — 107 ms short in this test,
-while the video kept every frame. Always discard it and re-mux the original
-audio (`-map 0:v -map 1:a -c copy`). Verified to restore exact alignment.
+Real-ESRGAN per frame. Works on arbitrary recorded footage. Verified 2026-07-29
+on a 288x240 webcam-tile crop at `scale: 4`:
 
-Order of operations: upscale first, re-mux original audio, then composite and
-burn captions. Never caption before upscaling or the text gets resampled.
+- Exactly 4x out (1152x960), with duration, frame rate and frame count all
+  preserved (96 in, 96 out).
+- Visibly cleaner than Lanczos plus unsharp — tighter edges, none of the ringing
+  sharpening introduces. It removes artefacts rather than inventing detail.
+- ~44 s wall time per 4 s of 288x240 at 4x.
+- Audio came back 107 ms short despite every video frame surviving.
 
-Real-ESRGAN is restorative rather than hallucinatory, so it is far safer on
-screen recordings than a video model — but it still synthesises detail. Check
-small UI text for legibility instead of assuming it survived.
+Restorative rather than hallucinatory, so far safer on screen recordings than a
+video model — but it still synthesises detail. Check small UI text for legibility
+instead of assuming it survived.
 
-## Background removal
+### Matting — `veed/video-background-removal/fast`
 
-`veed/video-background-removal/fast` extracts the subject with no green screen.
-Use it when a landscape source has to fill a vertical frame: compositing a cutout
-onto a designed backdrop fills 9:16 without upscaling the subject past its
-quality ceiling, because the background costs no resolution. This is the fix for
-"speaker in a letterboxed box with black bars above and below".
+Subject extraction, no green screen. Use it when a landscape source has to fill a
+vertical frame: compositing a cutout onto a designed backdrop fills 9:16 without
+upscaling the subject past its ceiling, because the background costs no
+resolution. This is the fix for a speaker letterboxed between black bars.
 
 Verified 2026-07-29 on a 1152x960 clip, `output_codec: vp9`,
 `refine_foreground_edges: true`:
 
-- Matte quality is good on a soft webcam source — clean edges at the head and
-  shoulders, ~42% opaque / 57% clear.
-- ~22 s wall time for 96 frames. Priced per 30 frames, refinement costing ~50%
-  more; roughly 1 cent per second of 24 fps footage.
-- Set `subject_is_person: false` for non-people. Do not use it on screen
-  recordings — the segmentation is subject-oriented and has nothing to hold onto.
+- Good matte on a soft webcam source — clean head and shoulder edges, ~42%
+  opaque.
+- ~22 s wall time for 96 frames. Priced per 30 frames, refinement ~50% more;
+  roughly a cent per second of 24 fps footage.
+- Set `subject_is_person: false` for objects. Useless on screen recordings — the
+  segmentation has nothing to hold onto.
+- 96 frames in, 93 out, audio re-encoded to Opus. The loss is end-truncation, not
+  distributed drops (confirmed by matching frames 0, 46 and 92), so existing
+  caption timings survive; only the tail goes.
 
-Three ffmpeg traps, all verified:
+Three ffmpeg traps on the alpha, all verified:
 
 1. `ffprobe` reports `pix_fmt=yuv420p` and `alphaextract` fails, but the alpha is
-   there — look for `TAG:ALPHA_MODE=1`. Force `-c:v libvpx-vp9` on the input or
-   it decodes opaque.
+   there — look for `TAG:ALPHA_MODE=1`. Force `-c:v libvpx-vp9` on input or it
+   decodes opaque.
 2. **Even with the forced decoder, a filtergraph silently drops the alpha.**
-   `overlay` then composites nothing and you get a bare background. Decode to raw
-   RGBA and pipe it into a second ffmpeg (`-pix_fmt rgba -f rawvideo -` into
-   `-f rawvideo -pix_fmt rgba -s WxH -r N -i -`), or write RGBA frames first.
-   Both work; inline does not.
-3. Output is **shorter than input** — 96 frames in, 93 out, with audio
-   re-encoded to Opus. The loss is end-truncation, not distributed drops
-   (confirmed by matching frames 0, 46 and 92 between input and output), so
-   earlier caption timings stay valid. Re-mux the original audio and account for
-   the clipped tail.
+   `overlay` composites nothing and returns a bare background, with no error.
+   Decode to raw RGBA and pipe into a second ffmpeg (`-pix_fmt rgba -f rawvideo -`
+   into `-f rawvideo -pix_fmt rgba -s WxH -r N -i -`), or write RGBA frames first.
+3. Swapping the real room for a synthetic backdrop is an editorial change, not
+   just a technical one. Confirm it suits the register before applying it.
 
-### Veo is not an upscaler
+## Veo is not an upscaler
 
-Two different things share the Veo name. Do not conflate them.
+Do not spend time here. `generate_videos` with a video source is *extension*, and
+only of Veo's own output — verified 2026-07-28 on the Gemini Developer API, where
+`veo-3.1-lite-generate-preview` refuses video input outright and the full and fast
+variants reject anything Veo did not generate. Recorded footage cannot be fed in,
+and an "upscale this" prompt on that path does nothing.
 
-**`generate_videos` with a video source is extension, not upscaling.** Verified
-on the Gemini Developer API, 2026-07-28: `veo-3.1-lite-generate-preview` refuses
-video input outright (*"Video extension is not allowed for this model"*), and the
-full and fast variants accept only video Veo itself produced (*"Input video must
-be a video that was generated by VEO that has been processed"*). Recorded footage
-cannot be fed in. Attaching an "upscale this" prompt to this path does nothing.
+A separate Veo upscaling capability was announced for Vertex AI on 2026-04-03,
+handling 1080p and 4K on footage from any source. It is a different API surface,
+was private preview at announcement, and is unverified here — assume no access
+until a call succeeds. Model IDs differ by surface (`-generate-001` on Vertex,
+`-generate-preview` on the Gemini API), as do the advertised capabilities; trust
+a probe over the capability table.
 
-**A standalone Veo upscaling capability exists on Vertex AI**, announced
-2026-04-03, documented as enhancing video to 1080p and 4K regardless of whether
-Veo, another model, or a camera produced it. It is a separate API surface, not
-`generate_videos` with a prompt. It was **private preview** at announcement —
-assume no access until a call actually succeeds. Not verified here; the session
-that established the above had no GCP credentials, so the Vertex path is
-documentation only.
-
-Surfaces differ — confirm which one you are on:
-
-- Model IDs are `veo-3.1-lite-generate-001` on Vertex, `veo-3.1-lite-generate-preview`
-  on the Gemini API.
-- Vertex lists "Extend videos: Supported" for 3.1 Lite while the Gemini API
-  rejects extension for that model, and the same Vertex page marks the video
-  modality "output only". Trust a probe over the capability table.
-- Vertex 3.1 Lite generation: 4, 6 or 8 s, 24 fps, 9:16 or 16:9, 720p/1080p,
-  us-central1 only. 4K comes from the upscaler, not from generation.
-
-If you get upscaler access:
-
-- The 8 s ceiling is a *generation* limit. Do not assume it binds the upscaler;
-  check its own duration limit before chunking and stitching.
-- Caption after upscaling, never before, so text is never resampled.
-- Before reusing caption timings, confirm the returned clip has the same duration
-  and frame rate as the input. Any drift invalidates them.
-
-Gemini API quirks when passing Veo-generated video: inline bytes are rejected
-(`encodedVideo` unsupported), so pass a Files API URI; and `Video.from_file()`
-attaches a mime type serialised as `encoding`, which is also rejected.
-
-Never run a *generative* video model as an upscaler over a screen recording — it
-reconstructs UI text into plausible nonsense. Prefer the Real-ESRGAN path above.
-
+Never use a generative video model as an upscaler on a screen recording. It
+reconstructs UI text into plausible nonsense.
